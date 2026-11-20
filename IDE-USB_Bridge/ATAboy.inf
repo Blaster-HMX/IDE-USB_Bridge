@@ -1,0 +1,30 @@
+[Version]
+Signature="$Windows NT$"
+Class=Ports
+ClassGuid={4D36E978-E325-11CE-BFC1-08002BE10318}
+Provider=%MFG%
+
+[Manufacturer]
+%MFG%=DeviceList
+
+[DeviceList]
+%DESCRIPTION%=DriverInstall,USB\VID_CAFE&PID_4005&MI_00
+
+[DriverInstall]
+include=mdmcpq.inf
+CopyFiles=Fake
+
+[DriverInstall.Services]
+include=mdmcpq.inf
+AddService=usbser,0x00000002,DriverService
+
+[DriverService]
+DisplayName=%DESCRIPTION%
+ServiceType=1
+StartType=3
+ErrorControl=1
+ServiceBinary=%12%\usbser.sys
+
+[Strings]
+MFG="Obsolete Tech"
+DESCRIPTION="ATAboy CDC"
